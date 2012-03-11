@@ -1,5 +1,6 @@
 package com.craftsmanguild.guava;
 
+import static com.google.common.base.Objects.equal;
 import static java.lang.String.format;
 
 import java.util.Map;
@@ -20,7 +21,7 @@ public class Matchers {
 
       @Override
       protected boolean matchesSafely(final Entry<K, V> entry) {
-        return key.equals(entry.getKey()) && value.equals(entry.getValue());
+        return equal(key, entry.getKey()) && equal(value, entry.getValue());
       }
     };
 
@@ -35,7 +36,7 @@ public class Matchers {
 
       @Override
       protected boolean matchesSafely(final FancyThing fancyThing) {
-        return money.equals(fancyThing.getFormattedMoney()) && thinger.equals(fancyThing.getFormattedThinger());
+        return equal(money, fancyThing.getFormattedMoney()) && equal(thinger, fancyThing.getFormattedThinger());
       }
     };
   }
