@@ -2,6 +2,8 @@ package com.craftsmanguild.guava;
 
 import static com.google.common.collect.HashBasedTable.create;
 import static java.util.Arrays.asList;
+import static org.hamcrest.Matchers.is;
+import static org.junit.Assert.assertThat;
 
 import java.util.HashMap;
 import java.util.List;
@@ -12,7 +14,7 @@ import org.junit.Test;
 import com.google.common.collect.Table;
 import com.google.common.collect.Tables;
 
-public class B_Tables {
+public class B_TablesTest {
 
   private static final List<String> ROWS = asList("a", "b", "c", "d");
   private static final List<String> COLUMNS = asList("1", "2", "3", "4");
@@ -30,11 +32,7 @@ public class B_Tables {
       }
     }
 
-    final Map<String, String> rowA = rowToColumn.get("a");
-    if (rowA != null) {
-      final String valueForColumn2 = rowA.get("2");
-      System.out.println(valueForColumn2.length());
-    }
+    assertThat(rowToColumn.get("a").get("2"), is("a2"));
   }
 
   @Test
@@ -46,10 +44,10 @@ public class B_Tables {
       }
     }
 
-    System.out.println(rowToColumn.get("a", "2"));
+    assertThat(rowToColumn.get("a", "2"), is("a2"));
 
     final Table<String, String, String> columnToRow = Tables.transpose(rowToColumn);
 
-    System.out.println(columnToRow.get("2", "a"));
+    assertThat(columnToRow.get("2", "a"), is("a2"));
   }
 }

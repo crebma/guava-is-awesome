@@ -15,7 +15,7 @@ import java.util.Set;
 
 import org.junit.Test;
 
-public class A_ConstructingCollections {
+public class A_ConstructingCollectionsTest {
 
   @Test
   public void makingLists() {

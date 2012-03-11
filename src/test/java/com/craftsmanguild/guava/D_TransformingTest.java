@@ -5,22 +5,29 @@ import static com.google.common.collect.Lists.transform;
 import static java.lang.String.format;
 import static java.text.NumberFormat.getCurrencyInstance;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import org.junit.Test;
 
 import com.google.common.base.Function;
 
-public class D_Transforming extends Z_BaseCrap {
+public class D_TransformingTest {
 
   @Test
   public void transformingAListWithoutGuava() {
-    System.out.println(thingWithRawDataToFancyThing(originalList()));
+    System.out
+        .println(thingWithRawDataToFancyThing(newArrayList(new ThingWithRawData(new BigDecimal("1234"), "first"),
+            new ThingWithRawData(new BigDecimal("5678"), "second"), new ThingWithRawData(new BigDecimal("9012"),
+                "third"))));
   }
 
   @Test
   public void transformingAListWithGuava() {
-    System.out.println(transform(originalList(), new ThingWithRawDataToFancyThingTransformer()));
+    System.out.println(transform(
+        newArrayList(new ThingWithRawData(new BigDecimal("1234"), "first"), new ThingWithRawData(
+            new BigDecimal("5678"), "second"), new ThingWithRawData(new BigDecimal("9012"), "third")),
+        new ThingWithRawDataToFancyThingTransformer()));
   }
 
   private List<FancyThing> thingWithRawDataToFancyThing(final List<ThingWithRawData> originalList) {
