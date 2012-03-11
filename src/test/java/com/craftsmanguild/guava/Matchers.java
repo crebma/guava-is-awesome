@@ -25,4 +25,18 @@ public class Matchers {
     };
 
   }
+
+  public static Matcher<FancyThing> fancyThing(final String money, final String thinger) {
+    return new TypeSafeMatcher<FancyThing>() {
+      @Override
+      public void describeTo(final Description description) {
+        description.appendText(format("FancyThing{%s, %s}", money, thinger));
+      }
+
+      @Override
+      protected boolean matchesSafely(final FancyThing fancyThing) {
+        return money.equals(fancyThing.getFormattedMoney()) && thinger.equals(fancyThing.getFormattedThinger());
+      }
+    };
+  }
 }
