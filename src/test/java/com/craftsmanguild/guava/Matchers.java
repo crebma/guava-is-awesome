@@ -27,7 +27,7 @@ public class Matchers {
 
   }
 
-  public static Matcher<FancyThing> fancyThing(final String money, final String thinger) {
+  public static Matcher<FancyThing> fancyThing(final String thinger, final String money) {
     return new TypeSafeMatcher<FancyThing>() {
       @Override
       public void describeTo(final Description description) {
